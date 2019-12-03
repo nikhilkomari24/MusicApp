@@ -1,6 +1,6 @@
 const Song = require('../models/song.model.js');
 const Review = require('../models/review.model.js');
-const Rating = require('../models/ratings.model.js');
+const Rating = require('../models/rating.model.js');
 
 
 // Retrieve songs from the database.
@@ -25,7 +25,7 @@ exports.search = (req, res) => {
 exports.getsongreview = (req, res) => {
     var songID = req.params.songID
 
-    Review.find({ songId: songID })
+    Review.find({ songid: songID })
         .then(reviews => {
             res.send(reviews)
         })
@@ -54,14 +54,14 @@ exports.getsongdata = (req, res) => {
 
 // Retrieve song rating from the database.
 exports.getsongrating = (req, res) => {
-    var songId = req.params.songID
+    var songID = req.params.songID
     Rating.aggregate([
-        { $match: { "songID": songId } },
+        { $match: { "songid": songID } },
         {
             $group: {
                 _id: null,
                 average: {
-                    $avg: "$ratings"
+                    $avg: "$rating"
                 }
             }
         }
