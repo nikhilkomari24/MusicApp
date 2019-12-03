@@ -12,6 +12,8 @@ const SongSchema = mongoose.Schema({
     Comment: { type: String, default: "" },
     Hidden:{ type: Boolean, default: false },
     Picture:{ type: String, default: "" }
+}, {
+    versionKey: false // avoiding versioning (inserts new field having version number)
 });
 
 module.exports = mongoose.model('Song', SongSchema, 'Song');
