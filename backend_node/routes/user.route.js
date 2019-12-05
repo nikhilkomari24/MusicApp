@@ -1,6 +1,6 @@
 module.exports = (app) => {
     const user = require('../controllers/user.controller.js');
-    const checkrequest=require('../middleware/appmiddleware.js');
+    const checkrequest=require('../authmiddleware/authentication.js');
 
     //validate user login
     app.post('/user/login',checkrequest.checklogin,user.validatelogin);
