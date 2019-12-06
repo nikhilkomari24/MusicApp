@@ -40,11 +40,9 @@ function checktoken(req, res, next){
 
 function logincheck(req, res, next){
     var exports = generateKeyValueFromBody(req.body)
-   // console.log(exports)
     if (!exports.email) return res.send({ message: "invalid request" })
     if (!exports.password) return res.send({ message: "invalid request" })
 
-    //write validations & sanitize here
 
     req.secret=secret
     next();
@@ -55,4 +53,5 @@ module.exports =  {
     checksignup:signupcheck,
     CheckToken:checktoken,
     checklogin:logincheck
+    
 };
