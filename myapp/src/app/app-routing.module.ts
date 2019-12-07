@@ -7,7 +7,7 @@ import { GuestComponent } from './guest/guest.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },              
-  { path: 'Guest', component: GuestComponent }
+  { path: 'guest', component: GuestComponent }
 ];
 
 @NgModule({

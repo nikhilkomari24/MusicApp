@@ -1,9 +1,16 @@
 <h1>Song List</h1>
 
-<ul *ngIf="songs">
+<ul class="songs">
   <li *ngFor="let song of songs">
-    <p class="title">{{ song.Title }}</p>
-    <p class="artist">{{ song.Artist }}</p>
-    <a class="site" href="{{ songs.website_url }}">site</a>
+    <p class="title">Title: {{ song.Title }}</p>
+    <p class="artist">Artist: {{ song.Artist }}</p>
+    <p class="album">Album: {{ song.Album }}</p>
+    <p class="duration">Duration: {{ song.Duration }}</p>
+    <p class="Year">Year: {{ song.Year }}</p>
+    <p class="Genre">Genre: {{ song.Genre }}</p>
+    <p class="Comment">Comment: {{ song.Comment }}</p>
+    <p class="Hidden">Hidden: {{ song.Hidden }}</p>
+    <p class="Picture">Picture: {{ song.Picture }}</p>
+    <p class="Rating">Rating: {{ song.Ratings }}</p>
   </li>
 </ul>

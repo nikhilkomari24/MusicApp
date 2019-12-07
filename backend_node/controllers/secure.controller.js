@@ -1,7 +1,9 @@
 const Song = require('../models/song.model.js');
 const Review = require('../models/review.model.js');
-const Rating = require('../models/ratings.model.js');
+const Rating = require('../models/rating.model.js');
 const Playlist = require('../models/playlist.model.js');
+
+var mongoose = require('mongoose');
 
 //need to change this here and everywhere
 function generateKeyValueFromBody(body) {
@@ -15,6 +17,7 @@ function generateKeyValueFromBody(body) {
 
 //adding a new song by user
 exports.addbyuser = (req, res) => {
+    console.log('entered add song by user')
     const inserts = generateKeyValueFromBody(req.body)
     Song.create(inserts)
         .then(data => {
@@ -37,7 +40,7 @@ exports.addbyuser = (req, res) => {
 // adding a rating by user
 exports.addrating = (req, res) => {
     const inserts = generateKeyValueFromBody(req.body)
-    var songID = inserts["songId"]
+    var songID =  mongoose.Types.ObjectId(inserts["songid"])
     Rating.create(inserts)
         .then(data => {
             if (Boolean(data["_id"])) {
@@ -56,8 +59,10 @@ exports.addrating = (req, res) => {
 };
 // adding a review by user
 exports.addreview = (req, res) => {
+    console.log('enter add review')
     const inserts = generateKeyValueFromBody(req.body)
-    var songID = inserts["songId"]
+    var songID =  mongoose.Types.ObjectId(inserts["songid"])
+    console.log(songID)
     Review.create(inserts)
         .then(data => {
             if (Boolean(data["_id"])) {

@@ -1,9 +1,12 @@
 //import libraries
 const express = require('express');
 const bodyParser = require('body-parser');
+var cors = require('cors')
 
 // create express app
 const app = express();
+
+app.use(cors());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -29,5 +32,7 @@ mongoose.connect(dbConfig.url, {
 mongoose.set('useCreateIndex', true);
 
 require('./routes/open.routes.js')(app);
+require('./routes/secure.routes.js')(app);
+require('./routes/admin.routes.js')(app);
 
 app.listen(4000, () => console.log('listening at 4000'));

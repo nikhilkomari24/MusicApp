@@ -5,6 +5,7 @@ const Rating = require('../models/rating.model.js');
 
 // Retrieve songs from the database.
 exports.getsong = (req, res) => {
+    console.log('entered get by guest')
     Song.find()
     .then(songs => {
         res.send(songs);
