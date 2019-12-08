@@ -1,0 +1,24 @@
+<form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+    <div id='mainpage'>
+        <div class="login-box">
+            <h1>Login</h1>
+            <!-- <p id="head"></p>
+            <div class="textbox">
+                <input type="text" placeholder="Username" id="name" name="username" required ngModel>
+            </div>
+            <p id="p1"></p>
+            <p id="p2"></p> -->
+            <div class="textbox">
+                <input type="text" placeholder="Email" id="email" name="email" required ngModel>
+            </div>
+            <p id="p3"></p>
+            <div class="textbox">
+                <input type="password" placeholder="Password" id="password" name="password" required ngModel>
+            </div>
+            <p id="p4"></p>
+            <!-- <input id="submit" type="submit" value="Sign in" onclick="return formValidation()" /> -->
+            <button type="submit" id="sub">Sign in</button><a href="#" routerLink="register">/Sign up</a>
+        </div>
+    </div>
+    
+</form>

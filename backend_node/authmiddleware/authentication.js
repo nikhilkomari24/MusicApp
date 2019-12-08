@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const secret = process.env.JWT_KEY;
 if (typeof secret === 'undefined') {
-    console.log("Please set secret as environment variable. E.g. JWT_KEY=\"Open Sesame\" node index");
     process.exit(1);
 }
 function generateKeyValueFromBody(body) {

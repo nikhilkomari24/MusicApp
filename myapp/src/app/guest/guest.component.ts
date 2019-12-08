@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 
+
+
 @Component({
   selector: 'app-guest',
   templateUrl: './guest.component.html',
@@ -8,9 +10,9 @@ import { HttpService } from '../http.service';
 })
 export class GuestComponent implements OnInit {
 
-  songs: Object;
+ songs:object
 
-  constructor(private _http: HttpService) { }
+ constructor(private _http: HttpService) { }
 
   ngOnInit() {
     this._http.getsong().subscribe(data => {
@@ -19,3 +21,12 @@ export class GuestComponent implements OnInit {
   });
  }
 }
+
+
+
+
+
+
+
+
+

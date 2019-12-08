@@ -1,0 +1,25 @@
+.head th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    align-content: center;
+    text-align: center;
+    background-color: white;
+    color: black;
+}
+  
+.body td, .head th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  align-content: center;
+  text-align: center
+}
+
+.head, .body {
+    /*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;*/
+    font-family: 'Comfortaa', cursive;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 25px;
+}
+
+.body tr:hover {background-color: white;}

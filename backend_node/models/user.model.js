@@ -14,4 +14,4 @@ var UserSchema = mongoose.Schema({
     versionKey: false // avoiding versioning (inserts new field having version number)
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema, 'User');

@@ -34,5 +34,6 @@ mongoose.set('useCreateIndex', true);
 require('./routes/open.routes.js')(app);
 require('./routes/secure.routes.js')(app);
 require('./routes/admin.routes.js')(app);
+require('./routes/user.routes.js')(app);
 
 app.listen(4000, () => console.log('listening at 4000'));

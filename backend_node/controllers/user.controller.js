@@ -56,7 +56,7 @@ exports.signup = (req, res) => {
 
 };
 
-exports.validatelogin = (req, res) => {
+exports.checkuser = (req, res) => {
     User.findOne({ email: req.body.email })
         .then(data => {
             if (!data) return res.status(400).send({ message: "Please enter valid username/password" })

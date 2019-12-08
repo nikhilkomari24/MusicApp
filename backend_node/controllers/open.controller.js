@@ -24,9 +24,8 @@ exports.search = (req, res) => {
 
 // Retrieve song review from the database.
 exports.getsongreview = (req, res) => {
-    var songID = req.params.songID
 
-    Review.find({ songid: songID })
+    Review.find()
         .then(reviews => {
             res.send(reviews)
         })
@@ -36,6 +35,19 @@ exports.getsongreview = (req, res) => {
             })
         });
 };
+// exports.getsongreview = (req, res) => {
+//     var songID = req.params.songID
+
+//     Review.find({ songid: songID })
+//         .then(reviews => {
+//             res.send(reviews)
+//         })
+//         .catch(err => {
+//             res.status(500).send({
+//                 message: err.message || "Some error occurred while retrieving song review."
+//             })
+//         });
+// };
 
 // Retrieve song data from the database.
 exports.getsongdata = (req, res) => {
