@@ -24,13 +24,14 @@
       <td class="artist"> {{ song.Artist }}</td>
       <td class="album"> {{ song.Album }}</td>
       <td class="duration"> {{ song.Duration }}</td>
-      <td class="Year"> {{ song._id }}</td>
+      <td class="Year"> {{ song.Year }}</td>
       <td class="Genre">{{ song.Genre }}</td>
       <!-- <td class="Comment">{{ song.Comment }}</td>
       <td class="Hidden"> {{ song.Hidden }}</td>
       <td class="Picture"> {{ song.Picture }}</td> -->
       <td class="Rating"> {{ song.Ratings }}</td>
-      <td><a href="#" routerLink="review">See Review</a></td>
+      <!-- <td><a href="#" routerLink="review">See Review</a></td> -->
+      <td><a href="javascript:void(0)" id="{{song._id}}" (click)="songdetfun($event)">View Review</a></td>
       <!-- <td><button>See Review</button></td> -->
     </tr>
 

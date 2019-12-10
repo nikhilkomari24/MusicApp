@@ -1,0 +1,34 @@
+<h1>Song Details</h1>
+
+<div class="reviews">
+  <thead class='head'>
+    <tr>
+      <th> Review </th>
+      <th> User </th>
+    </tr>
+
+  </thead>
+
+  <tbody class='body'>
+    <tr *ngFor="let review of reviews">
+      <td class="review">{{ review.review }}</td>
+      <td class="reviewby"> {{ review.reviewby }}</td>
+      <!-- <td class="album"> {{ song.Album }}</td>
+      <td class="duration"> {{ song.Duration }}</td>
+      <td class="Year"> {{ song._id }}</td>
+      <td class="Genre">{{ song.Genre }}</td> -->
+      <!-- <td class="Comment">{{ song.Comment }}</td>
+      <td class="Hidden"> {{ song.Hidden }}</td>
+      <td class="Picture"> {{ song.Picture }}</td> -->
+      <!-- <td class="Rating"> {{ song.Ratings }}</td> -->
+      <!-- <td><a href="#" routerLink="review">See Review</a></td> -->
+      <!-- <td><button>See Review</button></td> -->
+    </tr>
+
+  </tbody>
+<br>
+  <a href="#" routerLink="addsong">Add Song</a><br>
+  <a href="#" routerLink="">Add Review</a><br>
+  <a href="#" routerLink="">Add Rating</a><br>
+ 
+</div>

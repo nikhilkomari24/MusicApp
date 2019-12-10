@@ -21,10 +21,17 @@ export class LogindetailsComponent implements OnInit {
   onSubmit(form: NgForm) {
     console.log("onsubmit")
     this._http.checklogin(form.value).subscribe(data=>{
+      console.log(data)
       localStorage.setItem('KEY', data["WWW-Authenticate"])
-      this.router.navigate(['user'])
-      alert('User logged in');
-    })    
+      if (data['statusCode'] == 200){
+        this.router.navigate(['user'])
+        alert('User logged in');
+      }else{
+        alert('Please enter valid username and password')
+      }
+    
+    
+    })
   }
 
 }

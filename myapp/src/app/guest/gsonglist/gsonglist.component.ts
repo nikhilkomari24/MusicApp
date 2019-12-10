@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/http.service';
-import { NavigationExtras, Router } from '@angular/router';
+import { NavigationExtras, Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-gsonglist',
@@ -9,15 +9,21 @@ import { NavigationExtras, Router } from '@angular/router';
 })
 export class GsonglistComponent implements OnInit {
 
-  songs:object
+  songs: object
 
-  constructor(private _http: HttpService,  private router: Router) { }
+  constructor(private _http: HttpService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this._http.getsong().subscribe(data => {
       this.songs = data
       console.log(this.songs);
-  });
+    });
+  }
+
+  songdetfun(value: any) {
+    this.router.navigate(['review'], { relativeTo: this.route })
+    //   this.router.navigate(['review'])
+
   }
 
 }

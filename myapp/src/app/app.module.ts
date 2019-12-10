@@ -16,6 +16,8 @@ import { LogindetailsComponent } from './login/logindetails/logindetails.compone
 import { RegisterComponent } from './login/register/register.component';
 import { UserComponent } from './user/user.component';
 import { UsonglistComponent } from './user/usonglist/usonglist.component';
+import { UsongdetailsComponent } from './user/usongdetails/usongdetails.component';
+import { UaddsongComponent } from './user/uaddsong/uaddsong.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { UsonglistComponent } from './user/usonglist/usonglist.component';
     RegisterComponent,
     UserComponent,
     UsonglistComponent,
+    UsongdetailsComponent,
+    UaddsongComponent,
   ],
   imports: [
     BrowserModule,
