@@ -8,14 +8,20 @@ import { HttpService } from 'src/app/http.service';
 })
 export class UsongdetailsComponent implements OnInit {
 
-  reviews: object
+  details: object
+  songs:object
 
   constructor(private _http: HttpService) { }
 
   ngOnInit() {
+    this._http.getsong().subscribe(data => {
+      this.songs = data
+      console.log(this.songs);
+    });
+    
     this._http.getreview().subscribe(data => {
-      this.reviews = data
-      console.log(this.reviews);
+      this.details = data
+      console.log(this.details);
     }); 
   }
 

@@ -18,6 +18,7 @@ import { UserComponent } from './user/user.component';
 import { UsonglistComponent } from './user/usonglist/usonglist.component';
 import { UsongdetailsComponent } from './user/usongdetails/usongdetails.component';
 import { UaddsongComponent } from './user/uaddsong/uaddsong.component';
+import { UaddreviewComponent } from './user/uaddreview/uaddreview.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { UaddsongComponent } from './user/uaddsong/uaddsong.component';
     UsonglistComponent,
     UsongdetailsComponent,
     UaddsongComponent,
+    UaddreviewComponent,
   ],
   imports: [
     BrowserModule,

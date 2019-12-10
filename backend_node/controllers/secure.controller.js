@@ -5,27 +5,27 @@ const Playlist = require('../models/playlist.model.js');
 
 var mongoose = require('mongoose');
 
-//need to change this here and everywhere
-function generateKeyValueFromBody(body) {
-    const entries = Object.keys(body)
-    const inserts = {}
-    for (let i = 0; i < entries.length; i++) {
-        inserts[entries[i]] = Object.values(body)[i]
-    }
-    return inserts;
-}
+// //need to change this here and everywhere
+// function generateKeyValueFromBody(body) {
+//     const entries = Object.keys(body)
+//     const inserts = {}
+//     for (let i = 0; i < entries.length; i++) {
+//         inserts[entries[i]] = Object.values(body)[i]
+//     }
+//     return inserts;
+// }
 
 //adding a new song by user
 exports.addbyuser = (req, res) => {
-    console.log('entered add song by user')
-    const inserts = generateKeyValueFromBody(req.body)
-    Song.create(inserts)
+    // console.log('entered add song by user')
+    // const inserts = generateKeyValueFromBody(req.body)
+    Song.create(req.body)
         .then(data => {
             if (Boolean(data["_id"])) {
                 res.status(200).send({ message: data["_id"] })
             }
             else {
-                // didnt insert 
+ 
                 res.status(500).send({ message: "false" })
             }
         })
@@ -47,7 +47,6 @@ exports.addrating = (req, res) => {
                 res.status(200).send({ message: "true" })
             }
             else {
-                // didnt insert 
                 res.status(500).send({ message: songID })
             }
         })
@@ -60,20 +59,20 @@ exports.addrating = (req, res) => {
 // adding a review by user
 exports.addreview = (req, res) => {
     console.log('enter add review')
-    const inserts = generateKeyValueFromBody(req.body)
-    var songID =  mongoose.Types.ObjectId(inserts["songid"])
-    console.log(songID)
-    Review.create(inserts)
+    // const inserts = generateKeyValueFromBody(req.body)
+    // var songID =  mongoose.Types.ObjectId(inserts["songid"])
+    // console.log(songID)
+    Review.create(req.body)
         .then(data => {
             if (Boolean(data["_id"])) {
                 res.status(200).send({ message: "true" })
             }
             else {
-                res.status(500).send({ message: songID })
+                res.status(500).send({ message: err  })
             }
         })
         .catch(err => {
-            res.status(500).send({ message: songID })
+            res.status(500).send({ message: err  })
         });
 };
 
@@ -132,13 +131,11 @@ exports.addsongpl = (req, res) => {
     var ownerid = req.body.ownerID
 
     Playlist.updateOne({ _id: playlistid, ownerid: ownerid }, { "$push": { "songid": songid } })
-        //.then(data=>res.send(data))
         .then(data => {
             if (Boolean(data["nModified"])) {
                 res.status(200).send({ message: "true" })
             }
             else {
-                // didnt insert 
                 res.status(500).send({ message: "false" })
             }
         })
@@ -180,7 +177,6 @@ exports.hidepl = (req, res) => {
                 res.status(200).send({ message: "true" })
             }
             else {
-                // didnt insert 
                 res.status(500).send({ message: "false" })
             }
         })

@@ -1,0 +1,33 @@
+<form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+        <div id='mainpage'>
+            <div class="login-box">
+                <h1>Add Review/Rating</h1>
+                <p id="head"></p>
+                <div class="textbox">
+                    <input type="text" placeholder="song" id="song" name="song" required ngModel>
+                </div>
+                <p id="p1"></p>
+                <p id="p2"></p>
+                <div class="textbox">
+                    <input type="text" placeholder="review" id="review" name="review" required ngModel>
+                </div>
+                <p id="p3"></p>
+                <div class="textbox">
+                    <input type="text" placeholder="reviewby" id="reviewby" name="reviewby" required ngModel>
+                </div>
+                <p id="p4"></p>
+                <div class="textbox">
+                    <input type="text" placeholder="rating" id="rating" name="rating" required ngModel>
+                </div>
+                <!-- <p id="p5"></p>
+                <div class="textbox">
+                    <input type="text" placeholder="genre" id="genre" name="genre" required ngModel>
+                </div> -->
+                <p id="p5"></p>
+                <!-- <input id="submit" type="submit" value="Sign in" onclick="return formValidation()" /> -->
+                <button type="submit" id="sub">Add Review</button>
+            </div>
+        </div>
+        
+    </form>
+    

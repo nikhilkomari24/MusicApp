@@ -90,5 +90,22 @@ export class HttpService {
 
     });
   }
+
+  uaddreview(value: { song: any; review: any; reviewby: any; rating: any }) {
+    return this.http.post('http://localhost:4000/secure/addreview', JSON.stringify({
+      songid: '5dd86347444eb93620d35f08',
+      song:value.song,
+      review: value.review,
+      reviewby: value.reviewby,
+      rating: value.rating
+    }), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      }
+
+    });
+  }
   
 }

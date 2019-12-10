@@ -1,18 +1,66 @@
 <h1>Song Details</h1>
 
-<div class="reviews">
+<div class="songs">
   <thead class='head'>
     <tr>
-      <th> Review </th>
-      <th> User </th>
+      <th> Title </th>
+      <th> Artist </th>
+      <th> Album </th>
+      <th> Duration </th>
+      <th> Year </th>
+      <th> Genre </th>
+      <!-- <th> Comment </th>
+      <th> Hidden </th>
+      <th> Picture </th> -->
+      <th> Rating </th>
+      <th> Details </th>
     </tr>
 
   </thead>
 
   <tbody class='body'>
-    <tr *ngFor="let review of reviews">
-      <td class="review">{{ review.review }}</td>
-      <td class="reviewby"> {{ review.reviewby }}</td>
+    <tr *ngFor="let song of songs">
+      <td class="title">{{ song.Title }}</td>
+      <td class="artist"> {{ song.Artist }}</td>
+      <td class="album"> {{ song.Album }}</td>
+      <td class="duration"> {{ song.Duration }}</td>
+      <td class="Year"> {{ song.Year }}</td>
+      <td class="Genre">{{ song.Genre }}</td>
+      <!-- <td class="Comment">{{ song.Comment }}</td>
+      <td class="Hidden"> {{ song.Hidden }}</td>
+      <td class="Picture"> {{ song.Picture }}</td> -->
+      <td class="Rating"> {{ song.Ratings }}</td>
+      <!-- <td><a href="#" routerLink="review">See Review</a></td> -->
+      <td><a href="javascript:void(0)" id="{{song._id}}" (click)="songdetfun($event)">See Details</a></td>
+      <!-- <td><button>See Review</button></td> -->
+    </tr>
+
+  </tbody>
+
+<br>
+<br>
+<br>
+
+</div>
+<h1>Song Reviews</h1>
+
+<div class="reviews">
+  <thead class='head'>
+    <tr>
+        <th> Song </th>
+        <th> Review </th>
+        <th> Rating </th>
+        <th> User </th>
+    </tr>
+
+  </thead>
+
+  <tbody class='body'>
+    <tr *ngFor="let detail of details">
+        <td class="review">{{ detail.song }}</td>
+        <td class="reviewby"> {{ detail.review }}</td>
+        <td class="reviewby"> {{ detail.rating }}</td>
+        <td class="reviewby"> {{ detail.reviewby }}</td>
       <!-- <td class="album"> {{ song.Album }}</td>
       <td class="duration"> {{ song.Duration }}</td>
       <td class="Year"> {{ song._id }}</td>
@@ -28,7 +76,7 @@
   </tbody>
 <br>
   <a href="#" routerLink="addsong">Add Song</a><br>
-  <a href="#" routerLink="">Add Review</a><br>
-  <a href="#" routerLink="">Add Rating</a><br>
+  <br>
+  <a href="#" routerLink="addreview">Add Review/Rating</a><br>
  
 </div>

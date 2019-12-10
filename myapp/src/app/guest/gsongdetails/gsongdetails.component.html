@@ -3,7 +3,9 @@
 <div class="reviews">
   <thead class='head'>
     <tr>
+      <th> Song </th>
       <th> Review </th>
+      <th> Rating </th>
       <th> User </th>
     </tr>
 
@@ -11,7 +13,9 @@
 
   <tbody class='body'>
     <tr *ngFor="let review of reviews">
-      <td class="review">{{ review.review }}</td>
+      <td class="review">{{ review.song }}</td>
+      <td class="reviewby"> {{ review.review }}</td>
+      <td class="reviewby"> {{ review.rating }}</td>
       <td class="reviewby"> {{ review.reviewby }}</td>
       <!-- <td class="album"> {{ song.Album }}</td>
       <td class="duration"> {{ song.Duration }}</td>

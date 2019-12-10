@@ -13,6 +13,7 @@ import { UsonglistComponent } from './user/usonglist/usonglist.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { UsongdetailsComponent } from './user/usongdetails/usongdetails.component';
 import { UaddsongComponent } from './user/uaddsong/uaddsong.component';
+import { UaddreviewComponent } from './user/uaddreview/uaddreview.component';
 
 const routes: Routes = [
   {
@@ -34,7 +35,8 @@ const routes: Routes = [
     path: 'user', component: UserComponent, children: [
       { path: '', component: UsonglistComponent },
       { path: 'details', component: UsongdetailsComponent },
-      { path: 'details/addsong', component: UaddsongComponent }
+      { path: 'details/addsong', component: UaddsongComponent },
+      { path: 'details/addreview', component: UaddreviewComponent }
     ],canActivate: [AuthGuardService]
   }
 ];

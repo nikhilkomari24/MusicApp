@@ -1,28 +1,21 @@
 module.exports = (app) => {
     const secure = require('../controllers/secure.controller.js');
 
-    // adding a new song
-    app.post('/secure/addsong', secure.addbyuser);
+    
+    app.post('/secure/addsong', secure.addbyuser); // adding a new song
+    
+    app.post('/secure/addrating', secure.addrating); // adding a rating
+    
+    app.post('/secure/addreview', secure.addreview); // adding a review
 
-    // adding a rating
-    app.post('/secure/addrating', secure.addrating);
+    app.post('/secure/createplaylist', secure.createpl); // creating a playlist
 
-    // adding a review
-    app.post('/secure/addreview', secure.addreview);
+    app.put('/secure/editplaylist', secure.editpl); //changing title and description only by owner
 
-    // creating a playlist
-    app.post('/secure/createplaylist', secure.createpl);
+    app.put('/secure/playlist/addsong', secure.addsongpl); //adding a song to playlist
 
-    //changing title and description only by owner
-    app.put('/secure/editplaylist', secure.editpl);
+    app.delete('/secure/playlist/removesong', secure.remsongpl); //removing a song from playlist
 
-    //adding a song to playlist
-    app.put('/secure/playlist/addsong', secure.addsongpl);
-
-    //removing a song from playlist
-    app.delete('/secure/playlist/removesong', secure.remsongpl);
-
-    // hiding a playlist
-    app.put('/secure/hideplaylist', secure.hidepl);
+    app.put('/secure/hideplaylist', secure.hidepl); //removing a song from playlist
 
 }

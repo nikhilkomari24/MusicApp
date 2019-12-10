@@ -4,18 +4,18 @@ const Rating = require('../models/rating.model.js');
 const User = require('../models/user.model.js');
 
 ///need to change this here and everywhere
-function generateKeyValueFromBody(body) {
-    const entries = Object.keys(body)
-    const inserts = {}
-    for (let i = 0; i < entries.length; i++) {
-        inserts[entries[i]] = Object.values(body)[i]
-    }
-    return inserts;
-}
+// function generateKeyValueFromBody(body) {
+//     const entries = Object.keys(body)
+//     const inserts = {}
+//     for (let i = 0; i < entries.length; i++) {
+//         inserts[entries[i]] = Object.values(body)[i]
+//     }
+//     return inserts;
+// }
 
 exports.add = (req, res) => {
-    const inserts = generateKeyValueFromBody(req.body)
-    Song.create(inserts)
+    // const inserts = generateKeyValueFromBody(req.body)
+    Song.create(req.body)
         .then(data => {
             if (Boolean(data["_id"])) {
                 res.status(200).send({ message: data["_id"] })

@@ -3,10 +3,9 @@ const Review = require('../models/review.model.js');
 const Rating = require('../models/rating.model.js');
 
 
-// Retrieve songs from the database.
 exports.getsong = (req, res) => {
     console.log('entered get by guest')
-    Song.find()
+    Song.find().sort('-Ratings')
     .then(songs => {
         res.send(songs);
         console.log('response received')
@@ -15,14 +14,14 @@ exports.getsong = (req, res) => {
             message: err.message || "Some error occurred while retrieving songs."
         });
     });
-};
+}; // Retrieve songs from the database.
 
-// Retrieve selected song from the database.
+
 exports.search = (req, res) => {
 
-};
+};// Retrieve selected song from the database.
 
-// Retrieve song review from the database.
+
 exports.getsongreview = (req, res) => {
 
     Review.find()
@@ -34,7 +33,8 @@ exports.getsongreview = (req, res) => {
                 message: err.message || "Some error occurred while retrieving song review."
             })
         });
-};
+};// Retrieve song review from the database.
+
 // exports.getsongreview = (req, res) => {
 //     var songID = req.params.songID
 
@@ -49,7 +49,7 @@ exports.getsongreview = (req, res) => {
 //         });
 // };
 
-// Retrieve song data from the database.
+
 exports.getsongdata = (req, res) => {
 
     var songID = req.params.songID
@@ -63,9 +63,9 @@ exports.getsongdata = (req, res) => {
                 message: err.message || "Some error occurred while retrieving song data."
             })
         });
-};
+};// Retrieve song data from the database.
 
-// Retrieve song rating from the database.
+
 exports.getsongrating = (req, res) => {
     var songID = req.params.songID
     Rating.aggregate([
@@ -87,6 +87,6 @@ exports.getsongrating = (req, res) => {
                 message: err.message || "Some error occurred while retrieving song rating."
             })
         });
-};
+};// Retrieve song rating from the database.
 
 
