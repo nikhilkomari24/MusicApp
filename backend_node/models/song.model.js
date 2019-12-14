@@ -7,11 +7,12 @@ const SongSchema = mongoose.Schema({
     Artist:{ type: String, required: true },
     Album:{ type: String, required: true },
     Duration:{ type: Number, required: true },
-    Year:{ type: Number, required: true },
+    Year:{ type: String, required: true },
     Genre:{ type: String, required: true     },
     Comment: { type: String, default: "" },
     Hidden:{ type: Boolean, default: false },
-    Picture:{ type: String, default: "" }
+    Picture:{ type: String, default: "" },
+    Track:{ type: String, default: "1" }
 }, {
     versionKey: false // avoiding versioning (inserts new field having version number)
 });

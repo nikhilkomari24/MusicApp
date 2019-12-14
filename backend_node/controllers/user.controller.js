@@ -49,7 +49,7 @@ exports.signup = (req, res) => {
 exports.checkuser = (req, res) => {
     User.findOne({ email: req.body.email })
         .then(data => {
-            if (!data) return res.status(400).send({ message: "Please enter valid username/password" })
+            if (!data) return res.send({ "statusCode": 404, message: "Please enter valid username/password" })
             if (!data["active"]) return res.send({ statusCode: 400, message: "Account deactivated, please contact admin" })
 
             const hash = crypto.pbkdf2Sync(req.body.password, data.salt, saltnum, keylength, algorithm).toString('hex');
@@ -60,7 +60,7 @@ exports.checkuser = (req, res) => {
                 let token = jwt.sign(objToken, req.secret, { expiresIn: tokenexp });
                 res.send({ "statusCode": 200, "result": objToken, "WWW-Authenticate": token });
             }
-            else res.send({ "statusCode": 400, message: "Please enter valid username/password" })
+            else return res.send({ statusCode: 400, message: "Please enter valid username/password" })
         })
         .catch(err => {
             res.send({

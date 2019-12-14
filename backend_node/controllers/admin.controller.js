@@ -54,9 +54,9 @@ exports.del = (req, res) => {
 };
 
 exports.hide = (req, res) => {
-    var songID = req.body.songID
-    var hidden = req.body.hidden
-    Song.updateOne({ _id: songID }, { $set: { Hidden: hidden } })
+    // var songID = req.body.songID
+    // var hidden = req.body.hidden
+    Song.updateOne({ _id: req.body.songid }, { $set: { Hidden: req.body.hidden } })
         .then(data => {
             if (Boolean(data["nModified"])) {
 
@@ -115,13 +115,11 @@ exports.delreview = (req, res) => {
             })
         });
 };
-        
+
 
 exports.deactivate = (req, res) => {
 
-    var userid = req.body.userID
-    var isactive = req.body.isActive
-    User.updateOne({ _id: userid }, { $set: { active: isactive } })
+    User.updateOne({ _id: req.body.userid }, { $set: { active: req.body.status } })
         .then(data => {
             if (Boolean(data["nModified"])) {
                 res.status(200).send({ message: "true" })
@@ -138,12 +136,53 @@ exports.deactivate = (req, res) => {
         });
 };
 
-exports.getsong=(req,res)=>{
-    Song.find()
-    .then(data=>res.json(data))
-    .catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while fetching song list."
+exports.changetype = (req, res) => {
+
+    var userid = req.body.userid
+    var type = req.body.usertype
+    console.log(type)
+    console.log(userid)
+    if (type) {
+        type = "SM"
+    }
+    else {
+        type = "user"
+    }
+    console.log(type)
+    User.updateOne({ _id: userid }, { $set: { usertype: type } })
+        .then(data => {
+            console.log(data)
+            if (Boolean(data["nModified"])) {
+                res.status(200).send({ message: "true" })
+            }
+            else {
+                // didnt insert 
+                res.status(500).send({ message: "false" })
+            }
         })
-    });
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while deactivating a user."
+            })
+        });
+};
+
+exports.getsong = (req, res) => {
+    Song.find()
+        .then(data => { res.send({ list: data }) })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while fetching song list."
+            })
+        });
+}
+
+exports.userlist = (req, res) => {
+    User.find()
+        .then(data => { res.send({ list: data }) })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while fetching song list."
+            })
+        });
 }

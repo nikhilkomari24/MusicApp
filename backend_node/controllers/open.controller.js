@@ -5,7 +5,7 @@ const Rating = require('../models/rating.model.js');
 
 exports.getsong = (req, res) => {
     console.log('entered get by guest')
-    Song.find().sort('-Ratings')
+    Song.find({Hidden : false}).sort('-Ratings').limit(10)
     .then(songs => {
         res.send(songs);
         console.log('response received')

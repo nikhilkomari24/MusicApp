@@ -14,6 +14,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
 import { UsongdetailsComponent } from './user/usongdetails/usongdetails.component';
 import { UaddsongComponent } from './user/uaddsong/uaddsong.component';
 import { UaddreviewComponent } from './user/uaddreview/uaddreview.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,9 @@ const routes: Routes = [
       { path: 'details/addsong', component: UaddsongComponent },
       { path: 'details/addreview', component: UaddreviewComponent }
     ],canActivate: [AuthGuardService]
+  },
+  { 
+    path: 'admin', component: AdminComponent,canActivate: [AuthGuardService]
   }
 ];
 

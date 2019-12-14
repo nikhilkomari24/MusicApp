@@ -4,16 +4,27 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class HttpService {
+
+  httpnoun = 'http://localhost:4000'
 
   constructor(private http: HttpClient) { }
 
   getsong() {
-    return this.http.get('http://localhost:4000/open/songlist')
+    return this.http.get(this.httpnoun+'/open/songlist')
   }
 
   getreview() {
-    return this.http.get('http://localhost:4000/open/songreview')
+    return this.http.get(this.httpnoun+'/open/songreview')
+  }
+
+  getuserlist() {
+    return this.http.get(this.httpnoun+'/admin/userlist')
+  }
+
+  getadminsong() {
+    return this.http.get(this.httpnoun+'/admin/songlist')
   }
 
   postuser(value: { username: any; email: any; password: any }) {
@@ -25,7 +36,7 @@ export class HttpService {
       email:value.email,
       password: value.password
     }))
-    return this.http.post('http://localhost:4000/user/signup', JSON.stringify({
+    return this.http.post(this.httpnoun+'/user/signup', JSON.stringify({
       username: value.username,
       email:value.email,
       password: value.password      
@@ -47,7 +58,7 @@ export class HttpService {
       email:value.email,
       password: value.password
     }))
-    return this.http.post('http://localhost:4000/user/login', JSON.stringify({
+    return this.http.post(this.httpnoun+'/user/login', JSON.stringify({
       email:value.email,
       password: value.password      
 
@@ -70,7 +81,7 @@ export class HttpService {
     //   email:value.email,
     //   password: value.password
     // }))
-    return this.http.post('http://localhost:4000/secure/addsong', JSON.stringify({
+    return this.http.post(this.httpnoun+'/secure/addsong', JSON.stringify({
       Title: value.title,
       Artist:value.artist,
       Album: value.album,
@@ -92,12 +103,66 @@ export class HttpService {
   }
 
   uaddreview(value: { song: any; review: any; reviewby: any; rating: any }) {
-    return this.http.post('http://localhost:4000/secure/addreview', JSON.stringify({
+    return this.http.post(this.httpnoun+'/secure/addreview', JSON.stringify({
       songid: '5dd86347444eb93620d35f08',
       song:value.song,
       review: value.review,
       reviewby: value.reviewby,
       rating: value.rating
+    }), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      }
+
+    });
+  }
+
+  updatehidden(checked: any, songID: any) {
+    console.log(checked)
+    console.log(songID)
+
+    return this.http.put(this.httpnoun+'/admin/hidesong', JSON.stringify({
+      hidden: checked,
+      songid: songID   
+
+    }), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      }
+
+    });
+  }
+
+  updateuserstatus(checked: any, userID: any) {
+    console.log(checked)
+    console.log(userID)
+    
+    return this.http.put(this.httpnoun+'/admin/edituserstatus', JSON.stringify({
+      status: checked,
+      userid: userID   
+
+    }), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      }
+
+    });
+  }
+
+  updateusertype(checked: any, userID: any) {
+    console.log(checked)
+    console.log(userID)
+    
+    return this.http.put(this.httpnoun+'/admin/editusertype', JSON.stringify({
+      usertype: checked,
+      userid: userID   
+
     }), {
       headers: {
         'Content-Type': 'application/json',
