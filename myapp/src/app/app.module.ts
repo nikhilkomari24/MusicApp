@@ -19,6 +19,7 @@ import { UsonglistComponent } from './user/usonglist/usonglist.component';
 import { UsongdetailsComponent } from './user/usongdetails/usongdetails.component';
 import { UaddsongComponent } from './user/uaddsong/uaddsong.component';
 import { UaddreviewComponent } from './user/uaddreview/uaddreview.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { UaddreviewComponent } from './user/uaddreview/uaddreview.component';
     UsongdetailsComponent,
     UaddsongComponent,
     UaddreviewComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

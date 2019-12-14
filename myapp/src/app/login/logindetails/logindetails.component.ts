@@ -23,11 +23,11 @@ export class LogindetailsComponent implements OnInit {
     this._http.checklogin(form.value).subscribe(data=>{
       console.log(data)
       localStorage.setItem('KEY', data["WWW-Authenticate"])
-      if (data['statusCode'] == 200){
+      if (data['statusCode'] == 200 && data['result']['userType'] == 'user'){
         this.router.navigate(['user'])
         alert('User logged in');
-      }else{
-        alert('Please enter valid username and password')
+      }else if(data['statusCode'] == 200 && data['result']['userType'] == 'SM'){
+        alert('Welcome to Admin page')
       }
     
     

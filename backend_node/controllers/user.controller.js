@@ -20,36 +20,26 @@ exports.signup = (req, res) => {
                 let salt = crypto.randomBytes(16).toString('hex');
                 let hash = crypto.pbkdf2Sync(req.body.password, salt, saltnum, keylength, algorithm).toString('hex');
                 var userObj = {
-                    "username": req.body.username,
-                    "password": hash,
-                    "salt": salt,
-                    "email": req.body.email,
-                    "emailverified": false,
-                    "usertype": "user",
-                    "signupmethod": "registration"
+                    "username": req.body.username,"password": hash,"salt": salt,"email": req.body.email,"emailverified": false,"usertype": "user","signupmethod": "registration"
                 };
                 const user = new User(userObj);
                 user.save()
                     .then(data => {
                         var objToken = {
-                            "email": userObj.email,
-                            "id": data["_id"],
-                            "name": userObj.username,
-                            "emailverified": data["emailverified"],
-                            "userType": data["usertype"]
+                            "id": data["_id"],"name": userObj.username,"userType": data["usertype"]
                         }
                         let token = jwt.sign(objToken, req.secret, { expiresIn: tokenexp });
-                        res.status(200).send({ "statusCode": 200, "result": objToken, "WWW-Authenticate": token });
+                        res.send({ "statusCode": 200, "result": objToken, "WWW-Authenticate": token });
                     })
                     .catch(err => {
-                        res.status(500).send({
+                        res.send({
                             message: err.message || "An error occured while signing up"
                         })
                     });
             }
         })
         .catch(err => {
-            res.status(500).send({
+            res.send({
                 message: err.message || "An error occured while signing up"
             })
         });
@@ -65,19 +55,15 @@ exports.checkuser = (req, res) => {
             const hash = crypto.pbkdf2Sync(req.body.password, data.salt, saltnum, keylength, algorithm).toString('hex');
             if (hash == data.password) {
                 var objToken = {
-                    "email": data.email,
-                    "id": data["_id"],
-                    "name": data.username,
-                    "emailverified": data["emailverified"],
-                    "userType": data["usertype"]
+                    "id": data["_id"],"name": data.username,"userType": data["usertype"]
                 }
                 let token = jwt.sign(objToken, req.secret, { expiresIn: tokenexp });
-                res.status(200).send({ "statusCode": 200, "result": objToken, "WWW-Authenticate": token });
+                res.send({ "statusCode": 200, "result": objToken, "WWW-Authenticate": token });
             }
-            else return res.status(400).send({ message: "Please enter valid username/password" })
+            else res.send({ "statusCode": 400, message: "Please enter valid username/password" })
         })
         .catch(err => {
-            res.status(500).send({
+            res.send({
                 message: err.message || "An error occured while logging in"
             })
         });
