@@ -26,12 +26,12 @@ export class LogindetailsComponent implements OnInit {
           console.log('key',data["WWW-Authenticate"])
           localStorage.setItem('KEY', data["WWW-Authenticate"])
           if (data['statusCode'] == 200 && data['result']['userType'] == 'user') {
-            // localStorage.setItem('KEY', "")
             this.router.navigate(['user'])
             alert('User logged in');
             
           } else if (data['statusCode'] == 200 && data['result']['userType'] == 'SM') {
             this.router.navigate(['admin'])
+            alert('Logged in as Admin');
           } else if (data['statusCode'] == 400) {
             alert('Account deactivated, please contact admin')
           } else if (data['statusCode'] == 404) {
@@ -55,6 +55,10 @@ export class LogindetailsComponent implements OnInit {
     else {
       alert("Please enter Valid Email")
     }
+  }
+
+  back(){
+    this.router.navigate([''])
   }
 
 }

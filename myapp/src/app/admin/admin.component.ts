@@ -103,4 +103,9 @@ export class AdminComponent implements OnInit {
 
   }
 
+  back(){
+    this.router.navigate(['login'])
+    localStorage.setItem('KEY', "")
+  }
+
 }

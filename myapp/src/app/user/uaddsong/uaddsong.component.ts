@@ -35,4 +35,8 @@ export class UaddsongComponent implements OnInit {
     
   }
 
+  back(){
+    this.router.navigate(['user'])
+  }
+
 }

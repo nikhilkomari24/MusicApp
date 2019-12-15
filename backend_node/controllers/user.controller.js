@@ -64,7 +64,7 @@ exports.checkuser = (req, res) => {
                 let token = jwt.sign(objToken, req.secret, { expiresIn: tokenexp });
                 res.send({ "statusCode": 200, "result": objToken, "WWW-Authenticate": token });
             }
-            else return res.send({ statusCode: 400, message: "Please enter valid username/password" })
+            else return res.send({ statusCode: 404, message: "Please enter valid username/password" })
         })
         .catch(err => {
             res.send({

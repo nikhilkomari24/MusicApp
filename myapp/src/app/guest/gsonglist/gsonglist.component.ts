@@ -58,4 +58,8 @@ export class GsonglistComponent implements OnInit {
 
   }
 
+  back(){
+    this.router.navigate([''])
+  }
+
 }

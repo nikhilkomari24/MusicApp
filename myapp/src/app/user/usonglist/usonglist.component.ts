@@ -75,6 +75,11 @@ export class UsonglistComponent implements OnInit {
     });
 
   }
+  
+  back(){
+    this.router.navigate(['login'])
+    localStorage.setItem('KEY', "")
+  }
 
   
 

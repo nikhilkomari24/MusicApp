@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
         if (form.value.password != ""){
           this._http.postuser(form.value).subscribe(data=>{
             console.log(data)
+            localStorage.setItem('KEY', data["WWW-Authenticate"])
             this.router.navigate(['user'])
             alert('User registered');
           });  
@@ -58,6 +59,10 @@ export class RegisterComponent implements OnInit {
     else {
       alert('Please enter valid username')
     }
+  }
+
+  back(){
+    this.router.navigate(['login'])
   }
 
 }
