@@ -17,12 +17,47 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     console.log("onsubmit")
-    this._http.postuser(form.value).subscribe(data=>{
-      console.log(data)
-      this.router.navigate(['user'])
-      alert('User registered');
-    });
+    if (this.validateusername(form.value.username)){
+      if(this.validatemail(form.value.email)){
+        if (form.value.password != ""){
+          this._http.postuser(form.value).subscribe(data=>{
+            console.log(data)
+            this.router.navigate(['user'])
+            alert('User registered');
+          });  
+        }else{alert('Please enter password')}
+        
+      }          
+    }
     
+    
+  }
+
+  validatemail(email: any) {
+    if (Boolean(email)) {
+      var re = /^([a-zA-Z])+([a-zA-Z0-9_.+-])+\@(([a-zA-Z])+\.+?(com|co|ca|in|org|net|edu|info|gov|vekomy))\.?(com|co|in|org|net|edu|info|gov)?$/
+      if (!re.test(email)) {
+        alert("Please enter Valid Email")
+      } else { return true }
+    }
+    else {
+      alert("Please enter Valid Email")
+    }
+  }
+
+  validateusername(name: any) {
+    if (Boolean(name)) {
+      if (String(name).length < 0 || String(name).length > 20) {
+        alert('Username can be maximum of 20 characters')
+      }
+      var letter = /^([a-zA-Z]+\s)*[a-zA-Z]+$/
+      if (!name.match(letter)) {
+        alert('Please enter valid username without spaces')
+      }else{return true}
+    }
+    else {
+      alert('Please enter valid username')
+    }
   }
 
 }
