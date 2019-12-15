@@ -17,28 +17,30 @@ exports.getsong = (req, res) => {
 }; // Retrieve songs from the database.
 
 
-exports.search = (req, res) => {
-
-};// Retrieve selected song from the database.
-
-
-exports.getsongreview = (req, res) => {
-
-    Review.find()
-        .then(reviews => {
-            res.send(reviews)
+exports.songsearch = (req, res) => {
+    var word = req.params.keyword
+    console.log('word:', word)
+    Song.find({
+        $or: [
+            { Title: { '$regex': word, '$options': 'i' } },{ Album: { '$regex': word, '$options': 'i' } },            
+            { Artist: { '$regex': word, '$options': 'i' } },{ Year: { '$regex': word, '$options': 'i' } },            
+            { Genre: { '$regex': word, '$options': 'i' } }
+        ]
+    })
+        .then(data => {
+            res.json(data)
         })
         .catch(err => {
             res.status(500).send({
-                message: err.message || "Some error occurred while retrieving song review."
+                message: err.message
             })
         });
-};// Retrieve song review from the database.
+};// Retrieve selected song from the database.
+
 
 // exports.getsongreview = (req, res) => {
-//     var songID = req.params.songID
 
-//     Review.find({ songid: songID })
+//     Review.find()
 //         .then(reviews => {
 //             res.send(reviews)
 //         })
@@ -47,14 +49,27 @@ exports.getsongreview = (req, res) => {
 //                 message: err.message || "Some error occurred while retrieving song review."
 //             })
 //         });
-// };
+// };// Retrieve song review from the database.
+
+exports.getsongreview = (req, res) => {
+    var songID = req.params.songID
+
+    Review.find({ songid: songID })
+        .then(data => {
+            res.send(data)
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving song review."
+            })
+        });
+};// Retrieve song review from the database.
 
 
 exports.getsongdata = (req, res) => {
 
     var songID = req.params.songID
     Song.find({ _id: songID, Hidden: false })
-        .select('-_id')
         .then(songs => {
             res.send(songs)
         })

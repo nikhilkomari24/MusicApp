@@ -15,8 +15,14 @@ export class HttpService {
     return this.http.get(this.httpnoun+'/open/songlist')
   }
 
-  getreview() {
-    return this.http.get(this.httpnoun+'/open/songreview')
+  getsongdata(value:any) {
+    console.log('value:',value)
+    return this.http.get(this.httpnoun+'/open/songdata/'+ value)
+  }
+
+  getreview(value:any) {
+    console.log('song id value',value)
+    return this.http.get(this.httpnoun+'/open/songreview/'+ value)
   }
 
   getuserlist() {
@@ -25,6 +31,11 @@ export class HttpService {
 
   getadminsong() {
     return this.http.get(this.httpnoun+'/admin/songlist')
+  }
+
+  getsearchsong(value:any) {
+    console.log('value:',value)
+    return this.http.get(this.httpnoun+'/open/searchsong/'+ value)
   }
 
   postuser(value: { username: any; email: any; password: any }) {
