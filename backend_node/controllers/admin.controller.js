@@ -3,18 +3,7 @@ const Review = require('../models/review.model.js');
 const Rating = require('../models/rating.model.js');
 const User = require('../models/user.model.js');
 
-///need to change this here and everywhere
-// function generateKeyValueFromBody(body) {
-//     const entries = Object.keys(body)
-//     const inserts = {}
-//     for (let i = 0; i < entries.length; i++) {
-//         inserts[entries[i]] = Object.values(body)[i]
-//     }
-//     return inserts;
-// }
-
 exports.add = (req, res) => {
-    // const inserts = generateKeyValueFromBody(req.body)
     Song.create(req.body)
         .then(data => {
             if (Boolean(data["_id"])) {
@@ -33,8 +22,8 @@ exports.add = (req, res) => {
 };
 
 exports.del = (req, res) => {
-    var songID = req.body.songID
-
+    // var songID = req.body.songID
+    var songID = req.params.songID
     Song.deleteOne({ _id: songID })
         .then(data => {
             if (Boolean(data["deletedCount"])) {
@@ -54,8 +43,6 @@ exports.del = (req, res) => {
 };
 
 exports.hide = (req, res) => {
-    // var songID = req.body.songID
-    // var hidden = req.body.hidden
     Song.updateOne({ _id: req.body.songid }, { $set: { Hidden: req.body.hidden } })
         .then(data => {
             if (Boolean(data["nModified"])) {

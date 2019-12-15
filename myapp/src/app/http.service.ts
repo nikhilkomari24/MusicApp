@@ -15,14 +15,33 @@ export class HttpService {
     return this.http.get(this.httpnoun+'/open/songlist')
   }
 
+  getusong() {
+    return this.http.get(this.httpnoun+'/secure/songlist')
+  }
+
   getsongdata(value:any) {
     console.log('value:',value)
     return this.http.get(this.httpnoun+'/open/songdata/'+ value)
   }
 
+  delsong(value:any) {
+    console.log('delete value:',value)
+    return this.http.delete(this.httpnoun+'/admin/delsong/'+ value)
+  }
+
+  getusongdata(value:any) {
+    console.log('value:',value)
+    return this.http.get(this.httpnoun+'/secure/songdata/'+ value)
+  }
+
   getreview(value:any) {
     console.log('song id value',value)
     return this.http.get(this.httpnoun+'/open/songreview/'+ value)
+  }
+
+  getureview(value:any) {
+    console.log('song id value',value)
+    return this.http.get(this.httpnoun+'/secure/songreview/'+ value)
   }
 
   getuserlist() {
@@ -36,6 +55,11 @@ export class HttpService {
   getsearchsong(value:any) {
     console.log('value:',value)
     return this.http.get(this.httpnoun+'/open/searchsong/'+ value)
+  }
+
+  getusearchsong(value:any) {
+    console.log('value:',value)
+    return this.http.get(this.httpnoun+'/secure/searchsong/'+ value)
   }
 
   postuser(value: { username: any; email: any; password: any }) {
@@ -113,9 +137,39 @@ export class HttpService {
     });
   }
 
-  uaddreview(value: { song: any; review: any; reviewby: any; rating: any }) {
+  aaddsong(value: { title: any; artist: any; album: any; year: any; genre: any }) {
+    console.log(value.title)
+    console.log(value.artist)
+    console.log(value.album)
+    // console.log(JSON.stringify({
+    //   username: value.username,
+    //   email:value.email,
+    //   password: value.password
+    // }))
+    return this.http.post(this.httpnoun+'/admin/addsong', JSON.stringify({
+      Title: value.title,
+      Artist:value.artist,
+      Album: value.album,
+      Ratings: 3,
+      Duration: 3,
+      Year: value.year,
+      Genre: value.genre,
+      Comment: "",
+      Hidden: false,
+      Picture: ""
+    }), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      }
+
+    });
+  }
+
+  uaddreview(value: { song: any; review: any; reviewby: any; rating: any }, id: any) {
     return this.http.post(this.httpnoun+'/secure/addreview', JSON.stringify({
-      songid: '5dd86347444eb93620d35f08',
+      songid: id,
       song:value.song,
       review: value.review,
       reviewby: value.reviewby,

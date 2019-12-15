@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/http.service';
+import {NgForm} from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -9,7 +11,7 @@ import { HttpService } from 'src/app/http.service';
 export class AdminComponent implements OnInit {
   songs: object
   users: object
-  constructor(private _http: HttpService) { }
+  constructor(private _http: HttpService,private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this._http.getadminsong().subscribe(data => {
@@ -30,6 +32,33 @@ export class AdminComponent implements OnInit {
       console.log('USERS', this.users);
 
     });
+  }
+
+  songdelfun(value: any) {
+    console.log('song det value',value.srcElement.id)
+    this._http.delsong(value.srcElement.id).subscribe(data => {
+      console.log(data)
+      alert('song deleted');
+      this.ngOnInit();
+    });
+
+  }
+  
+  onSubmit(form: NgForm) {
+    console.log("form value add song",form.value.title)
+    if (form.value.title == "" || form.value.artist == ""){
+      alert('Please enter Title and Artist names')
+    }else{
+      this._http.aaddsong(form.value).subscribe(data=>{
+        console.log(data)
+        alert('song added');
+        this.router.navigate(['admin'])
+        form.reset();
+        this.ngOnInit();
+      });
+    }
+    
+    
   }
 
   toggleSong(value: any) {

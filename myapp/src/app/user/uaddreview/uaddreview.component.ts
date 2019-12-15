@@ -14,12 +14,12 @@ export class UaddreviewComponent implements OnInit {
 
   ngOnInit() {
   }
-  onSubmit(form: NgForm) {
-    console.log("onsubmit")
-    this._http.uaddreview(form.value).subscribe(data=>{
-      console.log(data)
-      alert('Review added');
-      this.router.navigate(['user'])
-    });
-  }
+  // onSubmit(form: NgForm) {
+  //   console.log("onsubmit")
+  //   this._http.uaddreview(form.value).subscribe(data=>{
+  //     console.log(data)
+  //     alert('Review added');
+  //     this.router.navigate(['user'])
+  //   });
+  // }
 }

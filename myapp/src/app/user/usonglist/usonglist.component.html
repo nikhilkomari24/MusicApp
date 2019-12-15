@@ -1,5 +1,22 @@
 <h1>Song List</h1>
 
+<form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+    <div id='mainpage'>
+      <div class="login-box">
+        <p id="head"></p>
+        <div class="textbox">
+          <input type="text" placeholder="Search Song" id="search" name="search" required ngModel> &nbsp; <button
+            type="submit" id="sub">Search</button>
+        </div>
+        <!-- <input id="submit" type="submit" value="Sign in" onclick="return formValidation()" /> -->
+  
+      </div>
+    </div>
+  
+  </form>
+
+<br>
+
 <div class="songs">
   <thead class='head'>
     <tr>
@@ -8,8 +25,8 @@
       <!-- <th> Album </th>
       <th> Duration </th>
       <th> Year </th>
-      <th> Genre </th>
-      <th> Comment </th>
+      <th> Genre </th> -->
+      <!-- <th> Comment </th>
       <th> Hidden </th>
       <th> Picture </th> -->
       <th> Rating </th>
@@ -31,7 +48,7 @@
       <td class="Picture"> {{ song.Picture }}</td> -->
       <td class="Rating"> {{ song.Ratings }}</td>
       <!-- <td><a href="#" routerLink="review">See Review</a></td> -->
-      <td><a href="javascript:void(0)" id="{{song._id}}" (click)="songdetfun($event)">See Details</a></td>
+      <td><a href="javascript:void(0)" id="{{song._id}}" (click)="songdetfun($event)">View Details</a></td>
       <!-- <td><button>See Review</button></td> -->
     </tr>
 
@@ -40,3 +57,173 @@
 
 
 </div>
+
+<br>
+<br>
+<br>
+
+<!-- <div *ngIf = "details?.length > 1"> -->
+<div>
+  <div class="details">
+    <thead class='head'>
+      <tr>
+        <th> Title </th>
+        <th> Artist </th>
+        <th> Album </th>
+        <th> Duration </th>
+        <th> Year </th>
+        <th> Genre </th>
+        <!-- <th> Comment </th>
+          <th> Hidden </th>
+          <th> Picture </th> -->
+        <th> Rating </th>
+        <th> Track </th>
+        <th>Review</th>
+      </tr>
+
+    </thead>
+
+    <tbody class='body'>
+      <tr *ngFor="let detail of details">
+        <td class="title">{{ detail.Title }}</td>
+        <td class="artist"> {{ detail.Artist }}</td>
+        <td class="album"> {{ detail.Album }}</td>
+        <td class="duration"> {{ detail.Duration }}</td>
+        <td class="Year"> {{ detail.Year }}</td>
+        <td class="Genre">{{ detail.Genre }}</td>
+        <!-- <td class="Comment">{{ song.Comment }}</td>
+          <td class="Hidden"> {{ song.Hidden }}</td>
+          <td class="Picture"> {{ song.Picture }}</td> -->
+        <td class="Rating"> {{ detail.Ratings }}</td>
+        <td class="Track"> {{ detail.Track }}</td>
+        <!-- <td><a href="#" routerLink="review">See Review</a></td> -->
+        <td><a href="javascript:void(0)" id="{{detail._id}}" (click)="songreview($event)">View/Add Review</a></td>
+        <!-- <td><button>See Review</button></td> -->
+      </tr>
+
+    </tbody>
+
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div>
+    <div class="reviews">
+      <thead class='head'>
+        <tr>
+          <th> Song </th>
+          <th> Review </th>
+          <th> Review By </th>
+          <!-- <th> Duration </th>
+          <th> Year </th>
+          <th> Genre </th> -->
+          <!-- <th> Comment </th>
+            <th> Hidden </th>
+            <th> Picture </th> -->
+          <!-- <th> Rating </th>
+          <th> Track </th> -->
+          <th> Rating </th>
+        </tr>
+
+      </thead>
+
+      <tbody class='body'>
+        <tr *ngFor="let review of reviews">
+          <td class="song">{{ review.song }}</td>
+          <td class="review"> {{ review.review }}</td>
+          <td class="reviewby"> {{ review.reviewby }}</td>
+          <!-- <td class="duration"> {{ review.Duration }}</td> -->
+          <!-- <td class="Year"> {{ detail.Year }}</td>
+          <td class="Genre">{{ detail.Genre }}</td> -->
+          <!-- <td class="Comment">{{ song.Comment }}</td>
+            <td class="Hidden"> {{ song.Hidden }}</td>
+            <td class="Picture"> {{ song.Picture }}</td> -->
+          <td class="Rating"> {{ review.rating }}</td>
+          <!-- <td class="Track"> {{ review.Track }}</td> -->
+          <!-- <td><a href="#" routerLink="review">See Review</a></td> -->
+          <!-- <td><a href="javascript:void(0)" id="{{review.songid}}" (click)="songreview($event)">View Review</a></td> -->
+          <!-- <td><button>See Review</button></td> -->
+        </tr>
+
+      </tbody>
+
+    </div>
+
+<div>  
+    <form #myform="ngForm" name="secondform" (ngSubmit)="onClick(myform)">
+        <div id='mainpage'>
+          <div class="login-box">
+            <h1>Add Review/Rating</h1>
+            <p id="head"></p>
+            <div class="textbox">
+              <input type="text" placeholder="song" id="song" name="song" required ngModel>
+            </div>
+            <p id="p1"></p>
+            <p id="p2"></p>
+            <div class="textbox">
+              <input type="text" placeholder="review" id="review" name="review" required ngModel>
+            </div>
+            <p id="p3"></p>
+            <div class="textbox">
+              <input type="text" placeholder="reviewby" id="reviewby" name="reviewby" required ngModel>
+            </div>
+            <p id="p4"></p>
+            <div class="textbox">
+              <input type="text" placeholder="rating" id="rating" name="rating" required ngModel>
+            </div>
+            <!-- <p id="p5"></p>
+                  <div class="textbox">
+                      <input type="text" placeholder="genre" id="genre" name="genre" required ngModel>
+                  </div> -->
+            <p id="p5"></p>
+            <!-- <input id="submit" type="submit" value="Sign in" onclick="return formValidation()" /> -->
+            <button type="submit" id="sub">Add Review</button>
+          </div>
+        </div>
+  
+      </form>
+</div>
+<br>
+<h1><a href="#" routerLink="details/addsong">Add Song</a><br></h1>
+
+
+    <!-- <h1>Song List</h1>
+
+<div class="songs">
+  <thead class='head'>
+    <tr>
+      <th> Title </th>
+      <th> Artist </th> -->
+    <!-- <th> Album </th>
+      <th> Duration </th>
+      <th> Year </th>
+      <th> Genre </th>
+      <th> Comment </th>
+      <th> Hidden </th>
+      <th> Picture </th> -->
+    <!-- <th> Rating </th>
+      <th> Details </th>
+    </tr>
+
+  </thead>
+
+  <tbody class='body'>
+    <tr *ngFor="let song of songs">
+      <td class="title">{{ song.Title }}</td>
+      <td class="artist"> {{ song.Artist }}</td> -->
+    <!-- <td class="album"> {{ song.Album }}</td>
+      <td class="duration"> {{ song.Duration }}</td>
+      <td class="Year"> {{ song.Year }}</td>
+      <td class="Genre">{{ song.Genre }}</td> -->
+    <!-- <td class="Comment">{{ song.Comment }}</td>
+      <td class="Hidden"> {{ song.Hidden }}</td>
+      <td class="Picture"> {{ song.Picture }}</td> -->
+    <!-- <td class="Rating"> {{ song.Ratings }}</td> -->
+    <!-- <td><a href="#" routerLink="review">See Review</a></td> -->
+    <!-- <td><a href="javascript:void(0)" id="{{song._id}}" (click)="songdetfun($event)">See Details</a></td> -->
+    <!-- <td><button>See Review</button></td> -->
+    <!-- </tr>
+
+  </tbody> -->

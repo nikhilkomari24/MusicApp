@@ -16,12 +16,18 @@ export class UaddsongComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log("onsubmit")
-    this._http.uaddsong(form.value).subscribe(data=>{
-      console.log(data)
-      alert('song added');
-      this.router.navigate(['user'])
-    });
+    console.log("form value add song",form.value.title)
+    if (form.value.title == "" || form.value.artist == ""){
+      alert('Please enter Title and Artist names')
+    }else{
+      this._http.uaddsong(form.value).subscribe(data=>{
+        console.log(data)
+        alert('song added');
+        form.reset();
+        this.router.navigate(['user'])
+      });
+    }
+    
     
   }
 

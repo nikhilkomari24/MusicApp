@@ -8,7 +8,7 @@ module.exports = (app) => {
 
     app.delete('/admin/delreview', admin.delreview); // remove review of a song
 
-    app.delete('/admin/delsong', admin.del); //remove a song from list
+    app.delete('/admin/delsong/:songID', admin.del); //remove a song from list
     
     app.put('/admin/hidesong', admin.hide); //hide a particular song
     

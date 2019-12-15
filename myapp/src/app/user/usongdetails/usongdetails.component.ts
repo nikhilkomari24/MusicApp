@@ -19,10 +19,10 @@ export class UsongdetailsComponent implements OnInit {
       console.log(this.songs);
     });
     
-    this._http.getreview().subscribe(data => {
-      this.details = data
-      console.log(this.details);
-    }); 
+    // this._http.getreview().subscribe(data => {
+    //   this.details = data
+    //   console.log(this.details);
+    // }); 
   }
 
 }

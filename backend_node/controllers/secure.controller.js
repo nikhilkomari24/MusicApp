@@ -5,20 +5,68 @@ const Playlist = require('../models/playlist.model.js');
 
 var mongoose = require('mongoose');
 
-// //need to change this here and everywhere
-// function generateKeyValueFromBody(body) {
-//     const entries = Object.keys(body)
-//     const inserts = {}
-//     for (let i = 0; i < entries.length; i++) {
-//         inserts[entries[i]] = Object.values(body)[i]
-//     }
-//     return inserts;
-// }
+exports.songsearch = (req, res) => {
+    var word = req.params.keyword
+    console.log('word:', word)
+    Song.find({
+        $or: [
+            { Title: { '$regex': word, '$options': 'i' } },{ Album: { '$regex': word, '$options': 'i' } },            
+            { Artist: { '$regex': word, '$options': 'i' } },{ Year: { '$regex': word, '$options': 'i' } },            
+            { Genre: { '$regex': word, '$options': 'i' } }
+        ]
+    })
+        .then(data => {
+            res.json(data)
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message
+            })
+        });
+};// Retrieve selected song from the database.
 
-//adding a new song by user
+exports.getsong = (req, res) => {
+    console.log('entered get by guest')
+    Song.find({Hidden : false}).sort('-Ratings')
+    .then(songs => {
+        res.send(songs);
+        console.log('response received')
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving songs."
+        });
+    });
+}; // Retrieve songs from the database.
+
+exports.getsongdata = (req, res) => {
+
+    var songID = req.params.songID
+    Song.find({ _id: songID, Hidden: false })
+        .then(songs => {
+            res.send(songs)
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving song data."
+            })
+        });
+};// Retrieve song data from the database.
+
+exports.getsongreview = (req, res) => {
+    var songID = req.params.songID
+
+    Review.find({ songid: songID })
+        .then(data => {
+            res.send(data)
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving song review."
+            })
+        });
+};// Retrieve song review from the database.
+
 exports.addbyuser = (req, res) => {
-    // console.log('entered add song by user')
-    // const inserts = generateKeyValueFromBody(req.body)
     Song.create(req.body)
         .then(data => {
             if (Boolean(data["_id"])) {
@@ -35,9 +83,8 @@ exports.addbyuser = (req, res) => {
             })
         });
 
-};
+};//adding a new song by user
 
-// adding a rating by user
 exports.addrating = (req, res) => {
     const inserts = generateKeyValueFromBody(req.body)
     var songID =  mongoose.Types.ObjectId(inserts["songid"])
@@ -55,13 +102,10 @@ exports.addrating = (req, res) => {
                 message: songID
             })
         });
-};
-// adding a review by user
+};// adding a rating by user
+
 exports.addreview = (req, res) => {
     console.log('enter add review')
-    // const inserts = generateKeyValueFromBody(req.body)
-    // var songID =  mongoose.Types.ObjectId(inserts["songid"])
-    // console.log(songID)
     Review.create(req.body)
         .then(data => {
             if (Boolean(data["_id"])) {
@@ -74,9 +118,9 @@ exports.addreview = (req, res) => {
         .catch(err => {
             res.status(500).send({ message: err  })
         });
-};
+};// adding a review by user
 
-// creating a playlist by user
+
 exports.createpl = (req, res) => {
 
     const inserts = generateKeyValueFromBody(req.body)
@@ -96,9 +140,9 @@ exports.createpl = (req, res) => {
                 message: err.message || "Some error occurred while creating a new playlist by user."
             })
         });
-};
+};// creating a playlist by user
 
-//editing of a song title and desc by user
+
 exports.editpl = (req, res) => {
     const updates = generateKeyValueFromBody(req.body)
     var playlistid = updates.playListID
@@ -123,7 +167,8 @@ exports.editpl = (req, res) => {
                 message: err.message || "Some error occurred while editing playlist title and desc by user."
             })
         });
-};
+};//editing of a song title and desc by user
+
 
 exports.addsongpl = (req, res) => {
     var playlistid = req.body.playListID
