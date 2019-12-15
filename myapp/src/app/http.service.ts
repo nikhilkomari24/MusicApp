@@ -184,6 +184,23 @@ export class HttpService {
     });
   }
 
+  uaddsreview(value: { song: any; review: any; reviewby: any; rating: any }, id: any) {
+    return this.http.post(this.httpnoun+'/secure/addreview', JSON.stringify({
+      songid: id,
+      song:value.song,
+      review: value.review,
+      reviewby: value.reviewby,
+      rating: value.rating
+    }), {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      }
+
+    });
+  }
+
   updatehidden(checked: any, songID: any) {
     console.log(checked)
     console.log(songID)

@@ -23,10 +23,13 @@ export class LogindetailsComponent implements OnInit {
     if (this.validatemail(form.value.email)) {
       if (form.value.password != "") {
         this._http.checklogin(form.value).subscribe(data => {
+          console.log('key',data["WWW-Authenticate"])
           localStorage.setItem('KEY', data["WWW-Authenticate"])
           if (data['statusCode'] == 200 && data['result']['userType'] == 'user') {
+            // localStorage.setItem('KEY', "")
             this.router.navigate(['user'])
             alert('User logged in');
+            
           } else if (data['statusCode'] == 200 && data['result']['userType'] == 'SM') {
             this.router.navigate(['admin'])
           } else if (data['statusCode'] == 400) {

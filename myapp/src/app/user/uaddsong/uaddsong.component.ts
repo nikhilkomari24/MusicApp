@@ -21,8 +21,12 @@ export class UaddsongComponent implements OnInit {
       alert('Please enter Title and Artist names')
     }else{
       this._http.uaddsong(form.value).subscribe(data=>{
-        console.log(data)
+        console.log("add console",data["message"])
         alert('song added');
+        this._http.uaddsreview(form.value,data["message"]).subscribe(data=>{
+          console.log(data)
+          alert('Review added');
+        });
         form.reset();
         this.router.navigate(['user'])
       });

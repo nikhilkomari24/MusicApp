@@ -36,4 +36,4 @@ require('./routes/secure.routes.js')(app);
 require('./routes/admin.routes.js')(app);
 require('./routes/user.routes.js')(app);
 
-app.listen(4000, () => console.log('listening at 4000'));
+app.listen(dbConfig.port, () => console.log('listening at 4000'));

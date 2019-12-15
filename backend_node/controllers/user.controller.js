@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 
-const crypto = require('crypto');
+const bcrypt = require('bcryptjs');
+const crypto = require('crypto')
 const saltnum = 10000;
 const keylength = 512;
 const algorithm = 'sha512';
@@ -18,7 +19,9 @@ exports.signup = (req, res) => {
             }
             else {
                 let salt = crypto.randomBytes(16).toString('hex');
+                // var salt = bcrypt.genSaltSync(10);
                 let hash = crypto.pbkdf2Sync(req.body.password, salt, saltnum, keylength, algorithm).toString('hex');
+                // var hash = bcrypt.hashSync("B4c0/\/",salt)
                 var userObj = {
                     "username": req.body.username,"password": hash,"salt": salt,"email": req.body.email,"emailverified": false,"usertype": "user","signupmethod": "registration"
                 };
@@ -53,6 +56,7 @@ exports.checkuser = (req, res) => {
             if (!data["active"]) return res.send({ statusCode: 400, message: "Account deactivated, please contact admin" })
 
             const hash = crypto.pbkdf2Sync(req.body.password, data.salt, saltnum, keylength, algorithm).toString('hex');
+            // const hash = bcrypt.hashSync(req.body.password, data.salt, saltnum, keylength, algorithm).toString('hex');
             if (hash == data.password) {
                 var objToken = {
                     "id": data["_id"],"name": data.username,"userType": data["usertype"]

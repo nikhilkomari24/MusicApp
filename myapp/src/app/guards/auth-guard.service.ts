@@ -8,7 +8,7 @@ export class AuthGuardService implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-    if (localStorage.getItem('KEY')!=null){
+    if (localStorage.getItem('KEY')!= ""){
       return true
     }else{
       this.router.navigate(['/'])

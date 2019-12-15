@@ -155,7 +155,7 @@ exports.changetype = (req, res) => {
 };
 
 exports.getsong = (req, res) => {
-    Song.find()
+    Song.find().sort('-Ratings')
         .then(data => { res.send({ list: data }) })
         .catch(err => {
             res.status(500).send({
