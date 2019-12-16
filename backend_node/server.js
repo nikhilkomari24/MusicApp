@@ -1,6 +1,7 @@
 //import libraries
 const express = require('express');
 const bodyParser = require('body-parser');
+const expressSanitizer = require('express-sanitizer');
 var cors = require('cors')
 
 // create express app
@@ -13,6 +14,23 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
+
+app.use(expressSanitizer());
+
+app.use(function (req, res, next) {
+    allreqsanitize(req);
+    next()
+})
+
+function allreqsanitize(request) {
+    var main = request.body
+    const keys = Object.keys(main)
+
+
+    for (let i = 0; i < keys.length; i++) {
+        request.body[keys[i]] = request.sanitize(Object.values(main)[i])
+    }
+}
 
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
