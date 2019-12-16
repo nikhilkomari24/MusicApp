@@ -206,7 +206,7 @@ export class HttpService {
     console.log(songID)
 
     return this.http.put(this.httpnoun+'/admin/hidesong', JSON.stringify({
-      hidden: checked,
+      hidden: String(checked),
       songid: songID   
 
     }), {
