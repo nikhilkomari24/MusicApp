@@ -23,7 +23,8 @@ export class RegisterComponent implements OnInit {
           this._http.postuser(form.value).subscribe(data=>{
             console.log(data)
             localStorage.setItem('KEY', data["WWW-Authenticate"])
-            this.router.navigate(['user'])
+            this.router.navigate(['verification'])
+            // this.router.navigate(['user'])
             alert('User registered');
           });  
         }else{alert('Please enter password')}

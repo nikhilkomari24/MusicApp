@@ -20,6 +20,7 @@ import { UsongdetailsComponent } from './user/usongdetails/usongdetails.componen
 import { UaddsongComponent } from './user/uaddsong/uaddsong.component';
 import { UaddreviewComponent } from './user/uaddreview/uaddreview.component';
 import { AdminComponent } from './admin/admin.component';
+import { VerificationComponent } from './verification/verification.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { AdminComponent } from './admin/admin.component';
     UaddsongComponent,
     UaddreviewComponent,
     AdminComponent,
+    VerificationComponent,
   ],
   imports: [
     BrowserModule,

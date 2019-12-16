@@ -15,6 +15,7 @@ import { UsongdetailsComponent } from './user/usongdetails/usongdetails.componen
 import { UaddsongComponent } from './user/uaddsong/uaddsong.component';
 import { UaddreviewComponent } from './user/uaddreview/uaddreview.component';
 import { AdminComponent } from './admin/admin.component';
+import { VerificationComponent } from './verification/verification.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,9 @@ const routes: Routes = [
   },
   { 
     path: 'admin', component: AdminComponent,canActivate: [AuthGuardService]
+  },
+  { 
+    path: 'verification', component: VerificationComponent,canActivate: [AuthGuardService]
   }
 ];
 
