@@ -1,9 +1,10 @@
+var mongoose = require('mongoose');
 const Song = require('../models/song.model.js');
 const Review = require('../models/review.model.js');
 const Rating = require('../models/rating.model.js');
 const Playlist = require('../models/playlist.model.js');
 
-var mongoose = require('mongoose');
+
 
 exports.songsearch = (req, res) => {
     var word = req.params.keyword
@@ -86,15 +87,13 @@ exports.addbyuser = (req, res) => {
 };//adding a new song by user
 
 exports.addrating = (req, res) => {
-    const inserts = generateKeyValueFromBody(req.body)
-    var songID =  mongoose.Types.ObjectId(inserts["songid"])
-    Rating.create(inserts)
+    Rating.create(req.body)
         .then(data => {
             if (Boolean(data["_id"])) {
                 res.status(200).send({ message: "true" })
             }
             else {
-                res.status(500).send({ message: songID })
+                res.status(500).send({ message: "false" })
             }
         })
         .catch(err => {
@@ -105,7 +104,6 @@ exports.addrating = (req, res) => {
 };// adding a rating by user
 
 exports.addreview = (req, res) => {
-    console.log('enter add review')
     Review.create(req.body)
         .then(data => {
             if (Boolean(data["_id"])) {
@@ -123,9 +121,7 @@ exports.addreview = (req, res) => {
 
 exports.createpl = (req, res) => {
 
-    const inserts = generateKeyValueFromBody(req.body)
-
-    Playlist.create(inserts)
+    Playlist.create(req.body)
         .then(data => {
             if (Boolean(data["_id"])) {
                 res.status(200).send({ message: data["_id"] })
@@ -144,14 +140,7 @@ exports.createpl = (req, res) => {
 
 
 exports.editpl = (req, res) => {
-    const updates = generateKeyValueFromBody(req.body)
-    var playlistid = updates.playListID
-    var ownerid = updates.ownerID
-
-    delete updates.playListID
-    delete updates.ownerID
-
-    Playlist.updateOne({ _id: playlistid, ownerid: ownerid }, { $set: updates })
+    Playlist.updateOne({ _id: req.body.playListID, ownerid: req.bdoy.ownerID }, { $set: req.body })
         .then(data => {
             if (Boolean(data["nModified"])) {
 
@@ -171,11 +160,8 @@ exports.editpl = (req, res) => {
 
 
 exports.addsongpl = (req, res) => {
-    var playlistid = req.body.playListID
-    var songid = req.body.songID
-    var ownerid = req.body.ownerID
 
-    Playlist.updateOne({ _id: playlistid, ownerid: ownerid }, { "$push": { "songid": songid } })
+    Playlist.updateOne({ _id: req.body.playListID, ownerid: req.body.ownerid }, { "$push": { "songid": req.body.songID } })
         .then(data => {
             if (Boolean(data["nModified"])) {
                 res.status(200).send({ message: "true" })
@@ -192,11 +178,8 @@ exports.addsongpl = (req, res) => {
 };
 
 exports.remsongpl = (req, res) => {
-    var playlistid = req.body.playListID
-    var songid = req.body.songID
-    var ownerid = req.body.ownerID
 
-    Playlist.updateOne({ _id: playlistid, ownerid: ownerid }, { "$pull": { "songid": songid } })
+    Playlist.updateOne({ _id: req.body.playListID, ownerid: req.body.ownerID }, { "$pull": { "songid": req.body.songID } })
         .then(data => {
             if (Boolean(data["nModified"])) {
                 res.status(200).send({ message: "true" })
@@ -213,10 +196,7 @@ exports.remsongpl = (req, res) => {
 };
 
 exports.hidepl = (req, res) => {
-    var playlistid = req.body.playListID
-    var hidden = req.body.hidden
-    var ownerid = req.body.ownerID
-    Playlist.updateOne({ _id: playlistid, ownerid: ownerid }, { $set: { hidden: hidden } })
+    Playlist.updateOne({ _id: req.body.playListID, ownerid: req.body.ownerID }, { $set: { hidden: req.body.hidden } })
         .then(data => {
             if (Boolean(data["nModified"])) {
                 res.status(200).send({ message: "true" })

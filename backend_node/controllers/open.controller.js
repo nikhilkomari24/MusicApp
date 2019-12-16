@@ -37,20 +37,6 @@ exports.songsearch = (req, res) => {
         });
 };// Retrieve selected song from the database.
 
-
-// exports.getsongreview = (req, res) => {
-
-//     Review.find()
-//         .then(reviews => {
-//             res.send(reviews)
-//         })
-//         .catch(err => {
-//             res.status(500).send({
-//                 message: err.message || "Some error occurred while retrieving song review."
-//             })
-//         });
-// };// Retrieve song review from the database.
-
 exports.getsongreview = (req, res) => {
     var songID = req.params.songID
 

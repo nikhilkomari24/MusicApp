@@ -22,7 +22,6 @@ exports.add = (req, res) => {
 };
 
 exports.del = (req, res) => {
-    // var songID = req.body.songID
     var songID = req.params.songID
     Song.deleteOne({ _id: songID })
         .then(data => {
@@ -63,10 +62,7 @@ exports.hide = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    const inserts = generateKeyValueFromBody(req.body)
-    var songid = inserts.songID
-    delete inserts.songID
-    Song.updateOne({ _id: songid }, { $set: inserts })
+    Song.updateOne({ _id: req.body.songID }, { $set: req.body })
         .then(data => {
             if (Boolean(data["nModified"])) {
                 res.status(200).send({ message: "true" })
