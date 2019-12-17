@@ -11,11 +11,11 @@
   border: 1px solid #ddd;
   padding: 8px;
   align-content: center;
-  text-align: center
+  text-align: center;
+  font-size: large;
 }
 
 .head, .body {
-    /*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;*/
     font-family: 'Comfortaa', cursive;
     border-collapse: collapse;
     width: 100%;
@@ -23,3 +23,62 @@
 }
 
 .body tr:hover {background-color: white;}
+
+a:link {
+  color: rgb(65, 63, 63);
+}
+
+
+a:visited {
+  color: black;
+}
+
+
+a:hover {
+  color: solid #4caf50;
+}
+
+
+a:active {
+  color: rgb(65, 63, 63);
+}
+
+#submit{
+  background: none;
+  border: 2px solid #4caf50;
+  color: rgb(65, 63, 63);
+  padding: 2px;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 12px 0;
+}
+
+.submit{
+  background: none;
+  border: 2px solid #4caf50;
+  color: rgb(65, 63, 63);
+  padding: 2px;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 12px 0;
+}
+
+
+
+
+.textbox input{
+  border: none;
+  outline: none;
+  background: none;
+  color: rgb(65, 63, 63);
+  font-size: 18px;
+  float: left;
+  margin: 12px 0;
+}
+
+.heading{
+  float:right;
+  font-size: larger;
+  font-style: italic;
+}
+

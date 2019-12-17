@@ -34,6 +34,7 @@ export class LogindetailsComponent implements OnInit {
             alert('Logged in as Admin');
           } else if (data['statusCode'] == 400) {
             alert('Account deactivated, please contact admin')
+            form.reset()
           } else if (data['statusCode'] == 404) {
             alert('Please enter valid username/password')
           } else {

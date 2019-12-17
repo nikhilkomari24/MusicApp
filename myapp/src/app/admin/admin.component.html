@@ -1,5 +1,5 @@
+<p class="heading">Logged in as : Site Manager &nbsp;</p>
 <h1>Song Details</h1>
-
 <div class="songs">
     <thead class='head'>
         <tr>
@@ -9,9 +9,6 @@
             <th> Duration </th>
             <th> Year </th>
             <th> Genre </th>
-            <!-- <th> Comment </th>
-      <th> Hidden </th>
-      <th> Picture </th> -->
             <th> Rating </th>
             <th> Hidden </th>
             <th> Delete </th>
@@ -29,18 +26,10 @@
             <td class="duration"> {{ song.Duration }}</td>
             <td class="Year"> {{ song.Year }}</td>
             <td class="Genre">{{ song.Genre }}</td>
-            <!-- <td class="Comment">{{ song.Comment }}</td>
-      <td class="Hidden"> {{ song.Hidden }}</td>
-      <td class="Picture"> {{ song.Picture }}</td> -->
             <td class="Rating"> {{ song.Ratings }}</td>
             <td><input type="checkbox" id="{{ song._id}}" (change)="toggleSong($event)" [(ngModel)]="song.Hidden" />
-            <td><a href="javascript:void(0)" id="{{song._id}}" (click)="songdelfun($event)">Delete</a></td>    
-                <!-- </td> -->
-
-
-                <!-- <td><a href="#" routerLink="review">See Review</a></td> -->
-                <!-- <td><a href="javascript:void(0)" id="{{song._id}}" (click)="songdetfun($event)">See Details</a></td> -->
-                <!-- <td><button>See Review</button></td> -->
+            <td><a href="javascript:void(0)" id="{{song._id}}" class="submit" (click)="songdelfun($event)">Delete</a>
+            </td>
         </tr>
 
     </tbody>
@@ -74,9 +63,6 @@
                 </td>
                 <td><input type="checkbox" id="{{ user._id}}" (change)="toggleSM($event)" [(ngModel)]="user.SM" />
                 </td>
-                <!-- <td><a href="#" routerLink="review">See Review</a></td> -->
-                <!-- <td><a href="javascript:void(0)" id="{{song._id}}" (click)="songdetfun($event)">See Details</a></td> -->
-                <!-- <td><button>See Review</button></td> -->
             </tr>
 
         </tbody>
@@ -115,9 +101,12 @@
                         <input type="text" placeholder="track" id="track" name="track" required ngModel>
                     </div>
                     <p id="p7"></p>
-                    <!-- <input id="submit" type="submit" value="Sign in" onclick="return formValidation()" /> -->
-                    <button type="submit" id="sub">Add Song</button> &nbsp; <button id="back" (click)="back()">Log Out</button>
+                    <button type="submit" id="submit">Add Song</button> &nbsp; <button id="submit" (click)="back()">Log
+                        Out</button>
                 </div>
             </div>
 
         </form>
+        <br>
+        <br>
+        <br>

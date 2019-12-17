@@ -1,0 +1,180 @@
+commit 72eb4c55323cbec13679204f6ee03fec0d078339
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sun Dec 15 23:22:25 2019 -0500
+
+    done minor bug fixes and organized the code
+
+commit bd60c6f2082963cfaceab8b78828b1e147547e25
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sun Dec 15 22:08:46 2019 -0500
+
+    Added code to sanitize all user inputs
+
+commit 58fa824eae5d28722ebf43bc5a6bed06129ad01c
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sun Dec 15 20:05:44 2019 -0500
+
+    final code clean up in the back end
+
+commit d2f8b60c5e6f65fd960d230149310d19dda17d64
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sun Dec 15 19:27:27 2019 -0500
+
+    added email verification part
+
+commit 84af0255d9ba69fe84da87a6d640f93683cae403
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sun Dec 15 18:50:55 2019 -0500
+
+    Created buttons to navigate between pages
+
+commit b5489f5dafa58b39d6a7103e01e2fb34e283683b
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sun Dec 15 17:45:02 2019 -0500
+
+    bcrypt for hashing and password check
+
+commit 7c4592c24d90c803738dee42bb83d7ea5443bf13
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sun Dec 15 14:10:35 2019 -0500
+
+    Input validations for username, email and password
+
+commit 4b5d96d31338d81ed4e7cdf2f017b8d4423705ec
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sun Dec 15 13:08:11 2019 -0500
+
+    added additional functionalities for admin & user
+
+commit 44bedafe2b9070c5282d8668686b450c36a58ca8
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sat Dec 14 23:24:41 2019 -0500
+
+    completed guest user functionalities in both ends
+
+commit c813ab33072ab7dcec8c2416673e694e3c91e0a2
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sat Dec 14 17:55:36 2019 -0500
+
+    Added admin functionalities
+
+commit dec55d28d0ef7d26135ba039f332f39865a298a0
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sat Dec 14 11:12:21 2019 -0500
+
+    Created admin component on front end
+
+commit ab170ada0e9f805e3a2e6e5e530072d72991c4db
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Tue Dec 10 13:12:34 2019 -0500
+
+    added functionality for user to add review/rating
+
+commit 75de4d4d425ec8a88a2404d0ff17c89b9eb6ba8f
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Mon Dec 9 19:51:16 2019 -0500
+
+    added user functionality to add song
+    using front end
+
+commit b8547bc5d126d588b733d4d3753c12aab0efd51e
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sun Dec 8 18:50:18 2019 -0500
+
+    added user login page and authentication front-end
+
+commit e00a9ec4dd68e283da15414603aa3abf1a128f15
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Fri Dec 6 22:37:30 2019 -0500
+
+    edited routes file, and installed angular material
+
+commit 75973a311b6d0c1ba82015df76b849cfce11689b
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Fri Dec 6 16:09:55 2019 -0500
+
+    creating guest page for unauthenticated user
+
+commit d4c88b2500b0d18478f657c3970fe2bea35e7a29
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Fri Dec 6 12:28:20 2019 -0500
+
+    edited auth module and started developing homepage
+
+commit 8de4840dacb8cc22052f9c03f46fdd9aa08b4de3
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Wed Dec 4 19:57:21 2019 -0500
+
+    modified authentication methods
+
+commit d51b19766245c2f6c778aef84dd459f4fa6dfa9d
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Wed Dec 4 19:28:00 2019 -0500
+
+    added playlist schema model
+
+commit bb467f4f0baac5e001bb562bd8a589d7437cee49
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Wed Dec 4 19:22:05 2019 -0500
+
+    added authentication middleware
+
+commit 58de76978f0728019190960f5834dc285afdc48a
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Wed Dec 4 18:21:25 2019 -0500
+
+    added user authentication routes and methods
+
+commit f1143ddab9aa52bb4aad192f8c45b1f4aa31bc80
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Tue Dec 3 21:49:28 2019 -0500
+
+    added more secure routes and added secure methods
+
+commit cb7678fe18b219aec0e5e0a15d79c6aecd6e483d
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Tue Dec 3 20:55:31 2019 -0500
+
+    added secure routes for an authenticated user
+
+commit 2a788c3b3a1f91e62e6aa8cff048f41d9284e6ab
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Tue Dec 3 20:37:05 2019 -0500
+
+    added admin routing methods in admin controller
+
+commit 8c591a9c454c61658186a117c6a1adf0a817674c
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Tue Dec 3 19:07:57 2019 -0500
+
+    added admin related routes
+
+commit 96b220244c0c110c089a01dda5f767236e711407
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Mon Dec 2 20:16:37 2019 -0500
+
+    created rating and review schema
+
+commit 87cdbb2b28558b876912a42d899bd26e8e14d6a8
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Mon Dec 2 19:11:42 2019 -0500
+
+    Added get song review,rating,data routes & methods
+
+commit 557e28a66ff819fab093b31730ba6dcde84b5209
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Mon Dec 2 17:47:41 2019 -0500
+
+    Added get songs route and setup of server side, DB
+
+commit 1edfa0d5b39f3f5bdb36908b25e54dd9ca7223d8
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Mon Dec 2 12:16:53 2019 -0500
+
+    Installed angular
+
+commit 4ed71fd0dda977325382dae3754154285f214285
+Author: nkomari <55295181+nkomari@users.noreply.github.com>
+Date:   Sun Dec 1 14:50:31 2019 -0500
+
+    Initial commit

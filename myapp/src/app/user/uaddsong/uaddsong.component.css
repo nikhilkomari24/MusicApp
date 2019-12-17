@@ -1,0 +1,22 @@
+#submit{
+    background: none;
+    border: 2px solid #4caf50;
+    color: rgb(65, 63, 63);
+    padding: 2px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 12px 0;
+  }
+
+
+
+.textbox input{
+    border: none;
+    outline: none;
+    background: none;
+    color: rgb(65, 63, 63);
+    font-size: 18px;
+    width: 80%;
+    float: left;
+    margin: 12px 0;
+  }

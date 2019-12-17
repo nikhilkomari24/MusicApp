@@ -1,28 +1,23 @@
-<form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
-    <div id='mainpage'>
-        <div class="login-box">
-            <h1>Login</h1>
-            <!-- <p id="head"></p>
-            <div class="textbox">
-                <input type="text" placeholder="Username" id="name" name="username" required ngModel>
+<div class='login-box'>
+    <form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+        <div id='mainpage'>
+            <div class="login-box">
+                <h1>Login</h1>
+                <div class="textbox">
+                    <input type="text" placeholder="Email" id="email" name="email" required ngModel>
+                </div>
+                <p id="p3"></p>
+                <div class="textbox">
+                    <input type="password" placeholder="Password" id="password" name="password" required ngModel>
+                </div>
+                <p id="p4"></p>                
+                <button type="submit" id="submit">Sign in</button> &nbsp; <button id="submit"><a href="#" routerLink="register">Sign
+                        up</a></button> &nbsp; <button id="submit" (click)="back()">Back to Home page</button>
             </div>
-            <p id="p1"></p>
-            <p id="p2"></p> -->
-            <div class="textbox">
-                <input type="text" placeholder="Email" id="email" name="email" required ngModel>
-            </div>
-            <p id="p3"></p>
-            <div class="textbox">
-                <input type="password" placeholder="Password" id="password" name="password" required ngModel>
-            </div>
-            <p id="p4"></p>
-            <!-- <input id="submit" type="submit" value="Sign in" onclick="return formValidation()" /> -->
-            <button type="submit" id="sub">Sign in</button> &nbsp; <button><a href="#" routerLink="register">Sign up</a></button> &nbsp; <button id="back" (click)="back()">Back to Home page</button>
         </div>
-    </div>
-    
-</form>
-<br>
 
-<!-- <button id="back" (click)="back()">Back to Home page</button> -->
-<!-- <a href="javascript:void(0)" id="back" (click)="back()">Back to Home page</a> -->
+    </form>
+
+</div>
+
+

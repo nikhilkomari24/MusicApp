@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/http.service';
-import {NgForm} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class AdminComponent implements OnInit {
   songs: object
   users: object
-  constructor(private _http: HttpService,private router: Router, private route: ActivatedRoute) { }
+  constructor(private _http: HttpService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this._http.getadminsong().subscribe(data => {
@@ -35,7 +35,7 @@ export class AdminComponent implements OnInit {
   }
 
   songdelfun(value: any) {
-    console.log('song det value',value.srcElement.id)
+    console.log('song det value', value.srcElement.id)
     this._http.delsong(value.srcElement.id).subscribe(data => {
       console.log(data)
       alert('song deleted');
@@ -43,13 +43,15 @@ export class AdminComponent implements OnInit {
     });
 
   }
-  
+
   onSubmit(form: NgForm) {
-    console.log("form value add song",form.value.title)
-    if (form.value.title == "" || form.value.artist == ""){
+    console.log("form value add song", form.value.title)
+    if (form.value.title == "" || form.value.artist == "") {
       alert('Please enter Title and Artist names')
-    }else{
-      this._http.aaddsong(form.value).subscribe(data=>{
+    } else if (isNaN(form.value.year) || isNaN(form.value.track)) {
+      alert('Please enter a number for year and track')
+    } else {
+      this._http.aaddsong(form.value).subscribe(data => {
         console.log(data)
         alert('song added');
         this.router.navigate(['admin'])
@@ -57,8 +59,7 @@ export class AdminComponent implements OnInit {
         this.ngOnInit();
       });
     }
-    
-    
+
   }
 
   toggleSong(value: any) {
@@ -72,7 +73,7 @@ export class AdminComponent implements OnInit {
       // this.router.navigate(['user'])
       this.ngOnInit();
     });
-    
+
   }
 
   toggleUser(value: any) {
@@ -103,7 +104,7 @@ export class AdminComponent implements OnInit {
 
   }
 
-  back(){
+  back() {
     this.router.navigate(['login'])
     localStorage.setItem('KEY', "")
   }

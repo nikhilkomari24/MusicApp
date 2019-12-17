@@ -19,6 +19,8 @@ export class UaddsongComponent implements OnInit {
     console.log("form value add song",form.value.title)
     if (form.value.title == "" || form.value.artist == ""){
       alert('Please enter Title and Artist names')
+    }else if(isNaN(form.value.year) || isNaN(form.value.track) || isNaN(form.value.rating)) {
+      alert('Please enter a number for year, track and rating')
     }else{
       this._http.uaddsong(form.value).subscribe(data=>{
         console.log("add console",data["message"])
